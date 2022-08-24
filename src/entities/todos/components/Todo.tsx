@@ -10,6 +10,12 @@ type TodoProps = {
     todo: ITodo
 }
 
+const button = {
+    rest: { scale: 1 },
+    hover: { scale: 1.1 },
+    pressed: { scale: 0.95 },
+}
+
 function Todo({ todo }: TodoProps) {
     const { mutate: toggleTodo } = useToggleTodoMutation()
     const { mutate: deleteTodo } = useDeleteTodoMutation()
@@ -108,7 +114,10 @@ function Todo({ todo }: TodoProps) {
                     )}
                     <div className="inline-flex space-x-1">
                         <div>
-                            <button
+                            <motion.button
+                                variants={button}
+                                whileHover="hover"
+                                whileTap="pressed"
                                 onClick={() => !isDragging.current && setIsEditing(true)}
                                 className={classNames(
                                     isEditing ? 'bg-white/40 visible' : 'invisible',
@@ -116,15 +125,18 @@ function Todo({ todo }: TodoProps) {
                                 )}
                             >
                                 <PencilIcon className="w-4 h-4" />
-                            </button>
+                            </motion.button>
                         </div>
                         <div>
-                            <button
+                            <motion.button
+                                variants={button}
+                                whileHover="hover"
+                                whileTap="pressed"
                                 onClick={() => !isDragging.current && deleteTodo(todo.id)}
                                 className="hover:bg-white/40 invisible group-hover:visible rounded-lg px-3 py-2 h-full"
                             >
                                 <TrashIcon className="w-4 h-4" />
-                            </button>
+                            </motion.button>
                         </div>
                     </div>
                 </div>
