@@ -10,9 +10,11 @@ function App() {
     return (
         <main className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-screen">
             <div className="flex items-center justify-center relative h-full">
-                <div className="p-6 w-1/2 min-h-1/4 backdrop-blur-sm bg-white/30 shadow-xl rounded-3xl relative">
-                    <Todos />
-                    <div className="absolute left-0 flex justify-center w-full">
+                <div className="w-1/2 min-h-1/4 backdrop-blur-sm bg-white/30 shadow-xl rounded-3xl relative">
+                    <div className="p-6 overflow-hidden">
+                        <Todos />
+                    </div>
+                    <div className="absolute left-0 -bottom-6 flex justify-center w-full">
                         <motion.button
                             whileHover={{
                                 scale: 1.1,
